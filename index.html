@@ -84,11 +84,11 @@
   <button id="restart-btn" onclick="restartGame()">Restart</button>
 
   <script>
-    let board = ["", "", "", "", "", "", "", "", ""];
-    let currentPlayer = "X";
-    let gameOver = false;
+    var board = ["", "", "", "", "", "", "", "", ""];
+    var currentPlayer = "X";
+    var gameOver = false;
 
-    let scores = { X: 0, O: 0, D: 0 };
+    var scores = { X: 0, O: 0, D: 0 };
 
     const winCombos = [
       [0, 1, 2],
@@ -102,15 +102,15 @@
     ];
 
     function createBoard() {
-      let boardDiv = document.getElementById("board");
+      var boardDiv = document.getElementById("board");
       boardDiv.innerHTML = "";
 
-      for (let i = 0; i < 9; i++) {
-        let cell = document.createElement("button");
+      for (var i = 0; i < 9; i++) {
+        var cell = document.createElement("button");
         cell.classList.add("cell");
         cell.setAttribute("id", "cell-" + i);
         cell.onclick = function() {
-          let index = this.id.split("-")[1];
+          var index = this.id.split("-")[1];
           handleClick(index);
         };
         boardDiv.appendChild(cell);
@@ -124,7 +124,7 @@
       board[index] = currentPlayer;
       document.getElementById("cell-" + index).textContent = currentPlayer;
 
-      let winner = checkWinner();
+      var winner = checkWinner();
 
       if (winner) {
         document.getElementById("status").textContent = "Player " + winner + " wins!";
@@ -143,10 +143,10 @@
     }
 
     function checkWinner() {
-      for (let i = 0; i < winCombos.length; i++) {
-        let a = winCombos[i][0];
-        let b = winCombos[i][1];
-        let c = winCombos[i][2];
+      for (var i = 0; i < winCombos.length; i++) {
+        var a = winCombos[i][0];
+        var b = winCombos[i][1];
+        var c = winCombos[i][2];
 
         if (board[a] != "" && board[a] === board[b] && board[b] === board[c]) {
           return board[a];
